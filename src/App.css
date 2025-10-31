@@ -1,0 +1,115 @@
+/* App.css */
+:root {
+  --accent: #ffcb05;
+}
+
+html, body, #root {
+  min-height: 100%;
+  margin: 0;
+  /* use same dark-blue gradient as the content so side gutters are dark */
+  background: linear-gradient(180deg, #071029 0%, #001f3f 100%);
+  color: #fff;
+}
+
+.app-root{ min-height:100vh; display:flex; flex-direction:column }
+.app-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px; background: transparent; box-shadow: none; }
+.app-header nav{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.app-main{ flex:1; padding:24px }
+.app-footer{ padding:12px 24px; text-align:center; font-size:13px; color:#555 }
+.container{ max-width:1100px; margin:0 auto }
+.grid{ display:grid; gap:16px }
+
+/* Button styles */
+/* default buttons: dark translucent background + white text for legibility on the new dark-blue page */
+.my-btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.06);
+  cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.06); /* subtle light layer over dark bg */
+  color: #fff;
+  transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+}
+
+/* primary remains the accent but gets a small shadow for contrast */
+.my-btn.primary{
+  background: var(--accent);
+  color: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  border: 0;
+}
+
+/* hover/focus styles to improve readability and accessibility */
+.my-btn:hover,
+.my-btn:focus{
+  background: rgba(255,255,255,0.11);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  outline: none;
+}
+.my-btn.primary:hover,
+.my-btn.primary:focus{
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+/* responsive header: allow nav to wrap on small screens */
+.app-header { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px; }
+.app-header nav { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+/* make .my-btn full width on small screens if desired */
+@media (max-width: 720px) {
+  .my-btn { width: 100%; display: inline-block; text-align:center; padding:10px; }
+  .app-header { padding:12px; }
+  .app-main { padding:12px; }
+}
+
+/* small tweaks for container on small screens */
+@media (max-width: 420px) {
+  .container { padding: 0 8px; }
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #111;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* simple SVG logo styling */
+.app-logo .logo-svg {
+  border-radius: 6px;
+  background: linear-gradient(180deg,#ffffff,#f3f3f3);
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  /* stronger drop shadow so logo pops on dark background */
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.85));
+}
+
+/* text next to logo */
+.app-logo .logo-text {
+  font-weight: 700;
+  color: #ffcb05;
+  margin-left: 4px;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  /* darker glow to improve legibility */
+  text-shadow: 0 3px 8px rgba(0,0,0,0.9);
+}
+
+/* nav links: make them white and add shadow for contrast */
+.app-header nav a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.85);
+}
+
+/* responsive: shrink logo text on small screens */
+@media (max-width: 520px) {
+  .app-logo .logo-text { font-size: 12px; }
+  .app-logo .logo-svg { width: 30px; height: 30px; }
+}

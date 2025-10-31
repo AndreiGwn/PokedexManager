@@ -1,0 +1,285 @@
+.details-root {
+  background: linear-gradient(135deg, #071029 0%, #07182a 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.pixel-title {
+  color: #ffd166;
+  text-shadow: 3px 3px #ff6b6b;
+  font-size: 1.2rem;
+}
+
+/* panel for selected pokemon */
+.details-panel {
+  display: inline-block;
+  padding: 12px 16px;
+  border: 3px solid #ffd166;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  margin-top: 12px;
+  text-align: center;
+  max-width: 980px;
+}
+
+/* layout: image + info side by side on wide screens */
+.details-flex {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* <-- Added position relative for badge overlay */
+}
+
+/* make real card image container use contain so whole pokemon shows */
+.card-image {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  object-fit: contain; /* show whole pokemon inside the image box */
+  background: #111;
+  border: 2px solid rgba(255,255,255,0.04);
+}
+
+/* smaller card fallback */
+.card-image.small {
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+}
+
+.card-caption {
+  margin-top: 8px;
+  color: #ffd;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* placeholder box when no TCG card is available */
+.card-placeholder {
+  width: 260px;
+  height: 360px;
+  border-radius: 8px;
+  border: 2px dashed rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-placeholder-inner { text-align: center; }
+
+/* small list style */
+.details-panel ul { margin: 8px 0 0 1rem; padding: 0; text-align: left; }
+
+.details-art {
+  width: 140px;
+  height: 140px;
+  image-rendering: pixelated;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.04);
+}
+
+.details-name {
+  margin-top: 8px;
+  color: #ffcb05;
+}
+
+.details-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.details-stats { margin-top: 8px; text-align: left; }
+.details-stats ul { margin: 6px 0 0 1rem; padding: 0; }
+
+.muted { color: #ffd166; opacity: 0.85; }
+
+.error { color: #ff6b6b; margin-top: 8px; }
+
+/* left info column */
+.details-info {
+  flex: 1 1 480px;
+  min-width: 260px;
+  text-align: left;
+  font-size: 14px; /* slightly smaller */
+}
+
+/* right card column */
+.card-column {
+  flex: 0 0 320px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 260px;
+}
+
+/* visual for actual card */
+.card-wrap.card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Info panel animation (slide & fade) */
+@keyframes infoIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.details-panel.show-info {
+  animation: infoIn 0.45s ease forwards;
+}
+
+/* Card appearance fade (used for both real card images and SVG fallback) */
+@keyframes cardFade {
+  0% { opacity: 0; transform: translateY(6px) scale(0.995); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-appear .card-image,
+.card-appear .svg-card {
+  opacity: 0;
+  animation: cardFade 0.7s cubic-bezier(.22,.9,.26,1) forwards;
+}
+
+/* Slight glow for the type text so it pops on dark background */
+.type-text {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+  font-weight: 700;
+}
+
+/* badge overlay for real TCG images */
+.card-wrap { position: relative; }
+.type-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.65);
+  color: #fff;
+  border: 2px solid rgba(0,0,0,0.08);
+  pointer-events: none; /* decorative */
+}
+
+/* ensure inline SVG inside badge scales and is white */
+.type-badge svg { width: 28px; height: 28px; fill: #fff; }
+
+/* slightly smaller badge on narrow screens */
+@media (max-width: 720px) {
+  .type-badge { width: 44px; height: 44px; font-size: 18px; top: 8px; right: 8px; }
+  .type-badge svg { width: 22px; height: 22px; }
+  .svg-card { width: 260px; height: 340px; }
+}
+
+/* make columns stack on small screens */
+@media (max-width: 880px) {
+  .details-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-column, .details-info {
+    width: 100%;
+    max-width: 720px;
+  }
+  .card-column { order: 2; }
+  .details-info { order: 1; }
+}
+
+/* responsive: stack earlier on smaller screens so layout doesn't squeeze */
+@media (max-width: 1060px) {
+  .details-flex { flex-direction: column; align-items: center; }
+  .card-column, .details-info { width: 100%; max-width: 900px; }
+  .card-column { order: 2; margin-top: 12px; justify-content: center; margin-left: 0; }
+  .details-info { order: 1; }
+  .svg-card { width: 260px; height: 340px; }
+  .card-image { width: 260px; height: auto; }
+}
+
+/* svg fallback sizing */
+.svg-card {
+  width: 300px;
+  height: 380px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  display: block;
+  background: #111;
+  border: 2px solid rgba(255,255,255,0.04);
+}
+
+/* TCG framed image with colored background and top-right badge */
+.tcg-frame {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+  width: max-content;
+  padding: 12px;
+  box-sizing: border-box;
+  /* lighter background so card colors show more */
+  background-clip: padding-box;
+}
+
+/* centered image inside colored frame */
+.tcg-frame .card-image {
+  display: block;
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 8px;
+}
+
+/* top-right badge container */
+.tcg-top-badge {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+
+/* small chip for each type (white bg with colored label) */
+.tcg-top-chip {
+  min-width: 38px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* responsive tweaks */
+@media (max-width: 920px) {
+  .tcg-frame .card-image { width: 220px; }
+  .tcg-top-chip { min-width: 30px; height: 22px; font-size: 9px; }
+}

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.home-container {
+  /* replaced dark gray with a dark-blue professional gradient */
+  text-align: center;
+  background: linear-gradient(180deg, #071029 0%, #001f3f 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.pixel-title {
+  font-size: 1.3rem;
+  text-shadow: 3px 3px #ffcb05;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border: 2px solid #ffcb05;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.search-bar button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffcb05;
+  border: none;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.search-bar button:hover {
+  background-color: #f5b700;
+}
+
+.results-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pokedex {
+  margin-top: 2rem;
+}
+
+.pokedex-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.team-container {
+  margin-top: 3rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* page entry for home */
+@keyframes pageEnter {
+  0% { opacity: 0; transform: translateY(8px) scale(0.996); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.page-animate { animation: pageEnter 0.6s cubic-bezier(.22,.9,.26,1) forwards; }
+
+/* make buttons slightly pop on entry */
+.page-animate .my-btn { transform-origin: center; opacity: 0; animation: buttonPop 0.7s ease 0.15s forwards; }
+@keyframes buttonPop {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ensure pixel title also has subtle pop */
+.page-animate .pixel-title { opacity: 0; transform: translateY(-6px); animation: titlePop 0.6s ease 0s forwards; }
+@keyframes titlePop {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* stronger shadows for legibility across the page */
+.home-container h1,
+.home-container h2,
+.home-container p,
+.pixel-title,
+.my-btn,
+.pokedex-grid .poke-card p,
+.details-name,
+.card-caption,
+.team-slot p,
+.poke-card p,
+.app-header nav a,
+.app-logo .logo-text {
+  color: #fff;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.9);
+}
+
+/* responsive form/buttons */
+@media (max-width: 720px) {
+  .search-bar input, .my-btn { width: 100%; box-sizing: border-box; }
+  form[role="search"], .search-bar, .results-section form { flex-direction: column; gap: 8px; }
+  .pokedex-grid { grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ensure container padding is comfortable on small devices */
+@media (max-width: 420px) {
+  .home-container { padding: 1rem; }
+}

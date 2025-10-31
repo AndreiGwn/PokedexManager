@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pokemon Team Manager - Index</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --bg-1: #0f172a;
+      --bg-2: #0b1220;
+      --accent: #ffcb05;
+      --muted: #9aa4b2;
+      --card-bg: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.05);
+      --pill: rgba(255,255,255,0.04);
+      --success: #34d399;
+      --danger: #fb7185;
+      font-synthesis: none;
+    }
+
+    html,body { height:100%; margin:0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.12), transparent 10%),
+                  linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      box-sizing:border-box;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .app {
+      width:100%;
+      max-width:1100px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px;
+      padding:20px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+
+    header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+    h1 { font-size:20px; margin:0 0 4px 0; color:#fff; letter-spacing:0.2px; }
+    .small { font-size:13px; color:var(--muted); margin:0; }
+
+    .grid {
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:16px;
+      flex:1 1 420px;
+      min-width:280px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .panel h2 { margin:0 0 12px 0; font-size:16px; color:#f8fafc; }
+
+    .row { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+    .col { flex:1; min-width:0; }
+    label { display:block; font-size:13px; margin-bottom:6px; color:var(--muted); }
+    input, textarea, select {
+      padding:10px 12px;
+      font-size:14px;
+      width:100%;
+      border-radius:8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.04);
+      color:#e6eef8;
+      outline:none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.01);
+    }
+    textarea { resize:vertical; min-height:120px; }
+
+    /* Buttons */
+    button {
+      padding:9px 14px;
+      border-radius:10px;
+      background: linear-gradient(180deg, #ffd54a, #ffb703);
+      border: none;
+      color:#0b1220;
+      font-weight:600;
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      box-shadow: 0 6px 18px rgba(3,7,18,0.45);
+      white-space:nowrap;
+    }
+    button.secondary {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      color: #d8e6ff;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow: none;
+    }
+    button.ghost {
+      background: transparent;
+      border:1px dashed rgba(255,255,255,0.06);
+      color:var(--muted);
+      box-shadow:none;
+    }
+    button:active { transform:translateY(1px) scale(.998); }
+    button:hover { opacity:0.95; transform:translateY(-2px); }
+
+    /* Teams list */
+    #teams-list { margin-top:8px; }
+    .team { border-radius:10px; padding:12px; margin-bottom:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      display:block;
+    }
+    .team .title { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+    .team strong { font-size:15px; color:#fff; }
+    .team .meta { font-size:12px; color:var(--muted); }
+
+    .poke-list { display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+    .poke { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:6px 10px; border-radius:999px; font-size:13px; color:#fff;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* API panel */
+    pre { background: rgba(2,6,23,0.6); color:#dfe; padding:12px; overflow:auto; border-radius:8px; font-size:13px; }
+    label[for="api-url"] { margin-top:6px; }
+
+    /* smaller buttons row */
+    .btn-row { display:flex; gap:8px; flex-wrap:wrap; }
+    .btn-row button { padding:8px 12px; font-size:13px; }
+
+    /* responsive tweaks */
+    @media (max-width:860px){
+      .grid { flex-direction:column; }
+      .panel { flex-basis:100%; }
+      header { flex-direction:column; align-items:flex-start; gap:6px; }
+      button { width:100%; }
+      .btn-row button { width:auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <h1>Pokemon Team Manager</h1>
+        <p class="small">Client-side API at /api/teams backed by localStorage — use fetch('/api/teams') or PokemonTeamAPI.</p>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="btn-get-all" class="secondary">Refresh</button>
+        <button id="btn-reset" class="ghost">Reset sample</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="panel">
+        <h2>Create team</h2>
+        <div class="row">
+          <div class="col">
+            <label for="team-name">Team name</label>
+            <input id="team-name" placeholder="e.g., Kanto squad" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="team-pokes">Pokémon (comma separated, up to 6)</label>
+            <input id="team-pokes" placeholder="Pikachu, Charizard, Bulbasaur" />
+          </div>
+        </div>
+        <div class="row"></div>
+          <button id="create-team">Create team</button>
+        </div>
+
+        <h2 style="margin-top:18px;">Teams</h2>
+        <div id="teams-list">Loading…</div>
+      </div>
+
+      <div class="panel">
+        <h2>API explorer / debug</h2>
+        <div class="btn-row" style="margin-bottom:10px;">
+          <button id="api-get">GET</button>
+          <button id="api-post">POST (json)</button>
+          <button id="api-put">PUT (json)</button>
+          <button id="api-delete">DELETE</button>
+        </div>
+
+        <label for="api-url">URL (relative)</label>
+        <input id="api-url" value="/api/teams" />
+
+        <label for="api-body">Body (JSON)</label>
+        <textarea id="api-body" rows="6">{ "name": "Example", "pokemons": ["Mew", "Mewtwo"] }</textarea>
+
+        <h3 style="margin-top:12px;">Response</h3>
+        <pre id="api-response">—</pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // GitHub Copilot generated - simple in-page Pokemon team API backed by localStorage
+    (function () {
+      const STORAGE_KEY = 'pokemon_teams_v1';
+
+      // helpers
+      function uid() {
+        // simple random id
+        return 't-' + Math.random().toString(36).slice(2, 10);
+      }
+
+      function readStorage() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return [];
+          return JSON.parse(raw);
+        } catch (e) {
+          console.error('Failed to read teams', e);
+          return [];
+        }
+      }
+
+      function writeStorage(teams) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(teams));
+      }
+
+      // initial sample data
+      function seedSample() {
+        const sample = [
+          { id: uid(), name: 'Kanto Classics', pokemons: ['Pikachu','Charizard','Blastoise','Venusaur','Ninetales','Alakazam'] },
+          { id: uid(), name: 'Mystic Trio', pokemons: ['Articuno','Zapdos','Moltres'] }
+        ];
+        writeStorage(sample);
+        return sample;
+      }
+
+      // API implementation (in-memory via localStorage)
+      const PokemonTeamAPI = {
+        listTeams() {
+          return Promise.resolve(readStorage());
+        },
+        getTeam(id) {
+          const teams = readStorage();
+          const t = teams.find(x => x.id === id);
+          return Promise.resolve(t || null);
+        },
+        createTeam(team) {
+          if (!team || !team.name) return Promise.reject(new Error('Invalid team object'));
+          const teams = readStorage();
+          const newT = { id: uid(), name: String(team.name), pokemons: (team.pokemons || []).slice(0,6) };
+          teams.push(newT);
+          writeStorage(teams);
+          return Promise.resolve(newT);
+        },
+        updateTeam(id, patch) {
+          const teams = readStorage();
+          const idx = teams.findIndex(x => x.id === id);
+          if (idx === -1) return Promise.resolve(null);
+          const t = teams[idx];
+          t.name = patch.name !== undefined ? String(patch.name) : t.name;
+          if (Array.isArray(patch.pokemons)) t.pokemons = patch.pokemons.slice(0,6);
+          teams[idx] = t;
+          writeStorage(teams);
+          return Promise.resolve(t);
+        },
+        deleteTeam(id) {
+          let teams = readStorage();
+          const before = teams.length;
+          teams = teams.filter(x => x.id !== id);
+          writeStorage(teams);
+          return Promise.resolve(before !== teams.length);
+        },
+        resetSample() {
+          seedSample();
+          return Promise.resolve(readStorage());
+        }
+      };
+
+      // ensure there is at least sample data
+      if (!localStorage.getItem(STORAGE_KEY)) seedSample();
+
+      // expose API object for direct use
+      window.PokemonTeamAPI = PokemonTeamAPI;
+
+      // override fetch for relative '/api/*' calls to use the above API.
+      // Other requests are passed through to the original fetch.
+      const originalFetch = window.fetch.bind(window);
+      window.fetch = async function(input, init) {
+        // normalize URL
+        const reqUrl = (typeof input === 'string' ? input : input.url);
+        const url = new URL(reqUrl, location.href);
+        if (!url.pathname.startsWith('/api/teams')) {
+          return originalFetch(input, init);
+        }
+
+        // parse body if present
+        let body = null;
+        if (init && init.body) {
+          try { body = JSON.parse(init.body); } catch(e) { body = null; }
+        } else if (typeof input !== 'string' && input instanceof Request) {
+          try { body = await input.json(); } catch(e) { body = null; }
+        }
+
+        const method = (init && init.method) || (typeof input !== 'string' && input instanceof Request ? input.method : 'GET');
+        const segments = url.pathname.split('/').filter(Boolean); // ['api', 'teams', ':id?']
+        const id = segments[2] || null;
+
+        try {
+          if (method === 'GET' && !id) {
+            const data = await PokemonTeamAPI.listTeams();
+            return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+          }
+          if (method === 'GET' && id) {
+            const data = await PokemonTeamAPI.getTeam(id);
+            if (!data) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+            return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+          }
+          if (method === 'POST' && !id) {
+            const created = await PokemonTeamAPI.createTeam(body);
+            return new Response(JSON.stringify(created), { status: 201, headers: { 'Content-Type': 'application/json' } });
+          }
+          if ((method === 'PUT' || method === 'PATCH') && id) {
+            const updated = await PokemonTeamAPI.updateTeam(id, body || {});
+            if (!updated) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+            return new Response(JSON.stringify(updated), { status: 200, headers: { 'Content-Type': 'application/json' } });
+          }
+          if (method === 'DELETE' && id) {
+            const ok = await PokemonTeamAPI.deleteTeam(id);
+            return new Response(JSON.stringify({ deleted: ok }), { status: ok ? 200 : 404, headers: { 'Content-Type': 'application/json' } });
+          }
+
+          return new Response(JSON.stringify({ error: 'Unsupported operation' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+        } catch (err) {
+          return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+        }
+      };
+
+      // UI wiring
+      const teamsListEl = document.getElementById('teams-list');
+      const btnCreate = document.getElementById('create-team');
+      const inputName = document.getElementById('team-name');
+      const inputPokes = document.getElementById('team-pokes');
+      const btnGetAll = document.getElementById('btn-get-all');
+      const btnReset = document.getElementById('btn-reset');
+
+      async function refreshTeams() {
+        const teams = await PokemonTeamAPI.listTeams();
+        teamsListEl.innerHTML = '';
+        if (!teams.length) { teamsListEl.textContent = 'No teams.'; return; }
+        teams.forEach(t => {
+          const div = document.createElement('div');
+          div.className = 'team';
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.innerHTML = '<strong>' + escapeHtml(t.name) + '</strong> <span class="meta">(' + t.id + ')</span>';
+          const pokes = document.createElement('div');
+          pokes.className = 'poke-list';
+          (t.pokemons || []).forEach(p => {
+            const pEl = document.createElement('div');
+            pEl.className = 'poke';
+            pEl.textContent = p;
+            pokes.appendChild(pEl);
+          });
+          const btns = document.createElement('div');
+          btns.style.marginTop = '8px';
+          const del = document.createElement('button'); del.textContent = 'Delete'; del.onclick = async () => {
+            await fetch('/api/teams/' + t.id, { method: 'DELETE' });
+            refreshTeams();
+          };
+          del.style.background = 'linear-gradient(180deg,#ff7b9c,#ff5a7a)';
+          del.style.color = '#1b1220';
+          const edit = document.createElement('button'); edit.textContent = 'Edit name'; edit.style.marginLeft='8px';
+          edit.className = 'secondary';
+          edit.onclick = async () => {
+            const newName = prompt('New team name', t.name);
+            if (newName) {
+              await fetch('/api/teams/' + t.id, { method: 'PUT', body: JSON.stringify({ name: newName }), headers: { 'Content-Type': 'application/json' } });
+              refreshTeams();
+            }
+          };
+          btns.appendChild(del); btns.appendChild(edit);
+
+          div.appendChild(title);
+          div.appendChild(pokes);
+          div.appendChild(btns);
+          teamsListEl.appendChild(div);
+        });
+      }
+
+      btnCreate.addEventListener('click', async () => {
+        const name = inputName.value.trim();
+        const pokes = inputPokes.value.split(',').map(s => s.trim()).filter(Boolean).slice(0,6);
+        if (!name) { alert('Provide a team name'); return; }
+        await fetch('/api/teams', { method: 'POST', body: JSON.stringify({ name, pokemons: pokes }), headers: { 'Content-Type': 'application/json' } });
+        inputName.value = ''; inputPokes.value = '';
+        refreshTeams();
+      });
+
+      btnGetAll.addEventListener('click', async () => {
+        const res = await fetch('/api/teams');
+        const json = await res.json();
+        document.getElementById('api-response').textContent = JSON.stringify(json, null, 2);
+        refreshTeams();
+      });
+
+      btnReset.addEventListener('click', async () => {
+        await PokemonTeamAPI.resetSample();
+        refreshTeams();
+      });
+
+      // API explorer buttons
+      document.getElementById('api-get').addEventListener('click', async () => {
+        const url = document.getElementById('api-url').value;
+        try {
+          const res = await fetch(url);
+          const json = await res.json();
+          document.getElementById('api-response').textContent = JSON.stringify(json, null, 2);
+        } catch (e) { document.getElementById('api-response').textContent = e.message; }
+        refreshTeams();
+      });
+      document.getElementById('api-post').addEventListener('click', async () => {
+        const url = document.getElementById('api-url').value;
+        const body = document.getElementById('api-body').value;
+        try {
+          const res = await fetch(url, { method: 'POST', body, headers: { 'Content-Type': 'application/json' } });
+          const json = await res.json();
+          document.getElementById('api-response').textContent = JSON.stringify(json, null, 2);
+        } catch (e) { document.getElementById('api-response').textContent = e.message; }
+        refreshTeams();
+      });
+      document.getElementById('api-put').addEventListener('click', async () => {
+        const url = document.getElementById('api-url').value;
+        const body = document.getElementById('api-body').value;
+        try {
+          const res = await fetch(url, { method: 'PUT', body, headers: { 'Content-Type': 'application/json' } });
+          const json = await res.json();
+          document.getElementById('api-response').textContent = JSON.stringify(json, null, 2);
+        } catch (e) { document.getElementById('api-response').textContent = e.message; }
+        refreshTeams();
+      });
+      document.getElementById('api-delete').addEventListener('click', async () => {
+        const url = document.getElementById('api-url').value;
+        try {
+          const res = await fetch(url, { method: 'DELETE' });
+          const json = await res.json();
+          document.getElementById('api-response').textContent = JSON.stringify(json, null, 2);
+        } catch (e) { document.getElementById('api-response').textContent = e.message; }
+        refreshTeams();
+      });
+
+      // small escaper for innerHTML usage
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (m) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); });
+      }
+
+      // initial refresh
+      ;
+
+      // Developer note: using window.fetch override to intercept calls to /api/teams
+      // allows other scripts to use familiar fetch(...) calls against this client-side API.
+    })();
+  </script>
+</body>
+</html>

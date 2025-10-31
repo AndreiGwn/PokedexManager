@@ -1,0 +1,45 @@
+.poke-card {
+  background-color: #222;
+  border: 5px solid #ffcb05;
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: white;
+  text-align: center;
+  font-size: 0.7rem;
+  transition: transform 0.1s ease;
+  cursor: grab;
+  box-sizing: border-box;
+  min-width: 0; /* allow flex/grid children to shrink properly */
+}
+
+.poke-card:hover {
+  transform: scale(1.05);
+}
+
+.poke-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+/* Responsive, truncated name line */
+.poke-card p {
+  margin: 0.4rem 0 0;
+  /* responsive font size: smaller on narrow screens */
+  font-size: clamp(0.55rem, 1.6vw, 0.75rem);
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* add subtle but dark shadow to lift text from background */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.85);
+  color: #fff;
+}
+
+/* make card scale nicely on small screens */
+@media (max-width: 520px) {
+  .poke-card { padding: 0.4rem; font-size: 0.65rem; }
+  .poke-card img { width: 56px; height: 56px; }
+}
