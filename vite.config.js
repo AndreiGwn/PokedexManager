@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/PokedexManager/', // Replace with your actual repo name
+  base: '/react-js-refresh-AndreiGwn/', // Updated for classroom repo
 })
