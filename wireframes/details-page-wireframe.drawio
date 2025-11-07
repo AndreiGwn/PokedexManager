@@ -1,0 +1,136 @@
+<mxfile host="65bd71144e">
+    <diagram id="detailsPageWireframe" name="Details Page">
+        <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- Header (Same as other pages) -->
+                <mxCell id="header" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1a1a2e;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="0" y="0" width="1200" height="80" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="logo" value="🎯 Pokedex Manager" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffd700;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="25" width="200" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="nav" value="Home    About    Details    Make your team" style="text;html=1;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="25" width="380" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="teamButton" value="Make your team" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff6b6b;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="1060" y="20" width="120" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Main Content Area -->
+                <mxCell id="mainContent" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#16213e;strokeColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="0" y="80" width="1200" height="720" as="geometry"/>
+                </mxCell>
+                
+                <!-- Page Title -->
+                <mxCell id="pageTitle" value="POKÉDEX DETAILS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="120" width="400" height="40" as="geometry"/>
+                </mxCell>
+                
+                <!-- Search Bar -->
+                <mxCell id="searchContainer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="180" width="500" height="50" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="searchInput" value="Zoek een Pokémon..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4a5568;strokeColor=#FFFFFF;fontColor=#FFFFFF;fontSize=14;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="190" width="380" height="30" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="searchButton" value="Zoeken" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd700;strokeColor=#000000;fontColor=#000000;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="190" width="80" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Examples Section -->
+                <mxCell id="examplesTitle" value="Voorbeelddex" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="270" width="300" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Cards Grid -->
+                <mxCell id="pokemonGrid" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="320" width="900" height="200" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 1 - Pikachu -->
+                <mxCell id="pokemonCard1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg1" value="[Pikachu Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd700;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName1" value="PIKACHU" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 2 - Charmander -->
+                <mxCell id="pokemonCard2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg2" value="[Charmander Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff6b6b;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName2" value="CHARMANDER" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 3 - Bulbasaur -->
+                <mxCell id="pokemonCard3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg3" value="[Bulbasaur Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName3" value="BULBASAUR" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 4 - Squirtle -->
+                <mxCell id="pokemonCard4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg4" value="[Squirtle Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName4" value="SQUIRTLE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 5 - Eevee -->
+                <mxCell id="pokemonCard5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg5" value="[Eevee Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8D6E63;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="780" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName5" value="EEVEE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Pokemon Card 6 - Snorlax -->
+                <mxCell id="pokemonCard6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2a3f5f;strokeColor=#ffd700;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="330" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonImg6" value="[Snorlax Image]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#000000;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="340" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="pokemonName6" value="SNORLAX" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="450" width="120" height="20" as="geometry"/>
+                </mxCell>
+                
+                <!-- Instruction Text -->
+                <mxCell id="instructionText" value="Klik op een Pokémon of zoek er één om details te zien." style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="550" width="500" height="30" as="geometry"/>
+                </mxCell>
+                
+                <!-- Layout Notes -->
+                <mxCell id="notes" value="Notes:&#xa;- Search functionality at top&#xa;- Grid layout with 6 example Pokemon&#xa;- Each card shows image and name&#xa;- Clickable cards for details&#xa;- Golden yellow accent color for borders&#xa;- Responsive grid layout" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fillColor=#f0f0f0;strokeColor=#cccccc;fontSize=12;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="120" width="120" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
